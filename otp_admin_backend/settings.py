@@ -172,5 +172,5 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret')
 ALLOWED_HOSTS = ['adminharubackend.onrender.com']
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('postgresql://harubayan_db_user:w86cadTmhtcjybd4XC9W7K9oDIhSwmEm@dpg-d0o6pqgdl3ps73aa9jv0-a/harubayan_db'))
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
