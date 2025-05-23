@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-9-&)8c16@w_)4nn0cq9vnn2$%x)4)3osrqmwa4uw11jugg3m%-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['harubayan-admin.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://harubayan-admin-clw0.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
