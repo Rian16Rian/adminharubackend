@@ -65,7 +65,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5500",
     "http://localhost:3000",
     "http://127.0.0.1:8000", #backend
-    "https://harubayan-admin.onrender.com" #frontend
+    "https://harubayan-admin.onrender.com",
+    "https://harubayan-admin-clw0.onrender.com", #frontend
   # or whatever your frontend URL is
 ] 
 
