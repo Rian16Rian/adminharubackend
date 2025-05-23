@@ -175,6 +175,11 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret')
 ALLOWED_HOSTS = ['adminharubackend.onrender.com']
 
+
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': dj_database_url.config(
+        default='postgresql://postgres:hrRPjmPvoFodHxFmPUktVSYEdDwmhumc@postgres.railway.internal:5432/railway',  # Paste from Railway
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
