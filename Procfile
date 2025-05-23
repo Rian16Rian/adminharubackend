@@ -1,1 +1,1 @@
-web: gunicorn your_project_name.wsgi
+web: gunicorn otp_admin_backend.wsgi
