@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-from dotenv import load_dotenv
 from pathlib import Path
 import os
 import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-9-&)8c16@w_)4nn0cq9vnn2$%x)4)3osrqmwa4uw11jugg3m%-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://harubayan-admin-clw0.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -58,6 +58,10 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
+
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
@@ -173,5 +177,5 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret')
 ALLOWED_HOSTS = ['adminharubackend.onrender.com']
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv(default='postgresql://harubayan_db_user:w86cadTmhtcjybd4XC9W7K9oDIhSwmEm@dpg-d0o6pqgdl3ps73aa9jv0-a/harubayan_db'))
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
