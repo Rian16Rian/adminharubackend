@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from corsheaders.defaults import default_headers
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +29,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["https://harubayan-admin-clw0.onrender.com", "adminharubackend.onrender.com", 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["harubayan-admin-clw0.onrender.com", "adminharubackend.onrender.com", 'localhost', '127.0.0.1']
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'X-CSRFToken',
+]
 
 
 # Application definition
@@ -75,13 +81,13 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_COOKIE_HTTPONLY = False  # must be False to read from JS
 CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1:5500",  # VS Code Live Server default
-    'http://localhost:5500',
-     'http://127.0.0.1:8000',
-     "https://harubayan-admin.onrender.com",
-     "https://harubayan-admin-clw0.onrender.com",
-     "https://adminharubackend.onrender.com",
-                        ]
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "http://127.0.0.1:8000",
+    "https://harubayan-admin.onrender.com",
+    "https://harubayan-admin-clw0.onrender.com",
+    "https://adminharubackend.onrender.com",
+]
 # settings.py
 
 # Also in settings.py
@@ -157,13 +163,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'admin_access.AdminUser'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -172,4 +175,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'harubayan.official@gmail.com'
 EMAIL_HOST_PASSWORD = 'bqts zpkx czwi tmby'
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret')
+SECRET_KEY = os.environ['SECRET_KEY']
