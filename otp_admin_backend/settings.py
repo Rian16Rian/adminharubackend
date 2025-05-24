@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-9-&)8c16@w_)4nn0cq9vnn2$%x)4)3osrqmwa4uw11jugg3m%-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://harubayan-admin-clw0.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -69,8 +69,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:8000", #backend
     "https://harubayan-admin.onrender.com",
-    "https://harubayan-admin-clw0.onrender.com", #frontend
-  # or whatever your frontend URL is
+    "https://harubayan-admin-clw0.onrender.com", 
 ] 
 
 
