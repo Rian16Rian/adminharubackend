@@ -23,7 +23,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9-&)8c16@w_)4nn0cq9vnn2$%x)4)3osrqmwa4uw11jugg3m%-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -79,17 +78,11 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:5500",  # VS Code Live Server default
     'http://localhost:5500',
      'http://127.0.0.1:8000',
-     "https://harubayan-admin.onrender.com"
+     "https://harubayan-admin.onrender.com",
      "https://harubayan-admin-clw0.onrender.com",
      "https://adminharubackend.onrender.com",
                         ]
 # settings.py
-
-CSRF_TRUSTED_ORIGINS = [
-    f"https://{os.environ.get('https://adminharubackend.onrender.com')}"
-]
-
-ALLOWED_HOSTS = [os.environ.get('https://adminharubackend.onrender.com')]
 
 # Also in settings.py
 SESSION_COOKIE_SAMESITE = 'None'
@@ -179,6 +172,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'harubayan.official@gmail.com'
 EMAIL_HOST_PASSWORD = 'bqts zpkx czwi tmby'
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
 SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret')
-ALLOWED_HOSTS = ['adminharubackend.onrender.com']
