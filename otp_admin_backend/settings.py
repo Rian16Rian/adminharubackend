@@ -80,6 +80,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5500',
      'http://127.0.0.1:8000',
      "https://harubayan-admin.onrender.com"
+     "https://harubayan-admin-clw0.onrender.com",
                         ]
 # settings.py
 
