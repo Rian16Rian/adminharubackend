@@ -11,21 +11,20 @@ from .models import AdminUser
 from .serializers import LoginSerializer, OTPVerifySerializer
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
-from django.views.decorators.csrf import csrf_exempt  # ✅ Add this
-
+from django.utils.decorators import method_decorator
 
 @ensure_csrf_cookie
 def get_csrf_token(request):
+    # This view sets the CSRF cookie when called by frontend
     return JsonResponse({'detail': 'CSRF cookie set'})
 
-
-# ✅ Ensures frontend can fetch CSRF token
 @method_decorator(ensure_csrf_cookie, name='dispatch')
 class GetCSRFTokenView(APIView):
     def get(self, request):
+        # Returns 200 and sets CSRF cookie
         return Response({'message': 'CSRF cookie set'}, status=200)
 
-@method_decorator(csrf_exempt, name='dispatch')
+# REMOVE csrf_exempt decorator to enforce CSRF protection
 class LoginView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
@@ -43,18 +42,18 @@ class LoginView(APIView):
                 send_mail(
                     'Your HaruBayan OTP Code',
                     f'Your OTP code is: {otp}',
-                    'harubayan.official@gmail.com',  # sender email
+                    'harubayan.official@gmail.com',
                     [user.email],
                     fail_silently=False,
                 )
 
-                login(request, user)  # session login
+                login(request, user)
 
                 return Response({'message': 'OTP sent to email.'}, status=status.HTTP_200_OK)
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@method_decorator(csrf_exempt, name='dispatch')
+# REMOVE csrf_exempt here too
 class OTPVerifyView(APIView):
     def post(self, request):
         try:
