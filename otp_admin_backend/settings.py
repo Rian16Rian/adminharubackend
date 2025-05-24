@@ -178,7 +178,7 @@ ALLOWED_HOSTS = ['adminharubackend.onrender.com']
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:hrRPjmPvoFodHxFmPUktVSYEdDwmhumc@postgres.railway.internal:5432/railway',  # Paste from Railway
+        default='postgresql://harubayan_db_user:w86cadTmhtcjybd4XC9W7K9oDIhSwmEm@dpg-d0o6pqgdl3ps73aa9jv0-a/harubayan_db', 
         conn_max_age=600,
         conn_health_checks=True,
     )
